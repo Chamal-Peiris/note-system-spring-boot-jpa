@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CrudRepository<T extends SuperEntity,ID extends Serializable> extends SuperRepository {
 
-    ID save(T entity);
+    T save(T entity);
     void deleteById(ID pk);
     boolean existById(ID pk);
     Optional<T>findById(ID pk);
