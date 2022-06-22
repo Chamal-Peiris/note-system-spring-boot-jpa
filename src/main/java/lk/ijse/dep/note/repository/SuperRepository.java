@@ -1,4 +1,4 @@
-package lk.ijse.dep.notes.repository;
+package lk.ijse.dep.note.repository;
 
 public interface SuperRepository {
 }

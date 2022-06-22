@@ -1,7 +1,7 @@
-package lk.ijse.dep.notes.repository;
+package lk.ijse.dep.note.repository;
 
 
-import lk.ijse.dep.notes.entity.SuperEntity;
+import lk.ijse.dep.note.entity.SuperEntity;
 
 
 import java.io.Serializable;

@@ -1,7 +1,7 @@
-package lk.ijse.dep.notes.config;
+package lk.ijse.dep.note.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lk.ijse.dep.notes.WebAppInitializer;
+import lk.ijse.dep.note.WebAppInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;

@@ -1,4 +1,4 @@
-package lk.ijse.dep.notes.entity;
+package lk.ijse.dep.note.entity;
 
 import java.io.Serializable;
 

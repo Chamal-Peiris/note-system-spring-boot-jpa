@@ -1,7 +1,7 @@
-package lk.ijse.dep.notes;
+package lk.ijse.dep.note;
 
-import lk.ijse.dep.notes.config.WebAppConfig;
-import lk.ijse.dep.notes.config.WebRootConfig;
+import lk.ijse.dep.note.config.WebAppConfig;
+import lk.ijse.dep.note.config.WebRootConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

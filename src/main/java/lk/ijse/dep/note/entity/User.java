@@ -1,9 +1,8 @@
-package lk.ijse.dep.notes.entity;
+package lk.ijse.dep.note.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

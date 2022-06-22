@@ -1,6 +1,6 @@
-package lk.ijse.dep.notes.repository.custom.impl;
+package lk.ijse.dep.note.repository.custom.impl;
 
-import lk.ijse.dep.notes.repository.custom.QueryRepository;
+import lk.ijse.dep.note.repository.custom.QueryRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

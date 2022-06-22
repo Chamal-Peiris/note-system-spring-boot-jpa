@@ -1,0 +1,4 @@
+jpa
+  show-sql:true
+  generate-ddl:true
+  dialect:org.hibernate.dialect.MySQL8Dialect
