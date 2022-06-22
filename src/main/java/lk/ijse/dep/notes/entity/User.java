@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Entity
 @Data
-public class User {
+public class User implements SuperEntity {
     @Id
     private String id;
     @Column(nullable = false,unique = true)
