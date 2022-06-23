@@ -2,7 +2,7 @@ package lk.ijse.dep.note.service.impl;
 
 import lk.ijse.dep.note.dto.UserDTO;
 import lk.ijse.dep.note.entity.User;
-import lk.ijse.dep.note.repository.custom.UserRepository;
+import lk.ijse.dep.note.repository.UserRepository;
 import lk.ijse.dep.note.service.UserService;
 import lk.ijse.dep.note.service.exception.DuplicateEmailException;
 import lk.ijse.dep.note.service.exception.NotFoundException;
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO registerUser(UserDTO user) throws DuplicateEmailException {
-        if(userRepository.existUserByEmail(user.getEmail()) ) throw new DuplicateEmailException("Email already exists");
+        if(userRepository.existsUserByEmail(user.getEmail()) ) throw new DuplicateEmailException("Email already exists");
         user.setId(UUID.randomUUID().toString());
         return transformer.getUserDTO(userRepository.save(transformer.getUserEntity(user)));
     }
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(String userId) throws NotFoundException {
-        if(!userRepository.existById(userId)) throw new NotFoundException("Invalid User id");
+        if(!userRepository.existsById(userId)) throw new NotFoundException("Invalid User id");
         userRepository.deleteById(userId);
 
 
