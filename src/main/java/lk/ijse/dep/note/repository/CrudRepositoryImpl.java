@@ -24,7 +24,6 @@ public abstract class CrudRepositoryImpl <T extends SuperEntity,ID extends Seria
        return entityManager.merge(entity);
 
     }
-
     @Override
     public void deleteById(ID pk) {
 

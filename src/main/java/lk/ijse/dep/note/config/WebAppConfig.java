@@ -17,7 +17,7 @@ import java.util.Properties;
 
 
 @Configuration
-//@EnableWebMvc
+@EnableWebMvc
 @ComponentScan(basePackageClasses = WebAppInitializer.class)
 public class WebAppConfig {
 
