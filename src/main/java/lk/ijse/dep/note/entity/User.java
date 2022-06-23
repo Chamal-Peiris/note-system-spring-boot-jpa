@@ -30,4 +30,11 @@ public class User implements SuperEntity {
     private void beforePersist(){
         notes.forEach(note->note.setUser(this));
     }
+
+    public User(String id, String email, String password, String fullName) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+    }
 }

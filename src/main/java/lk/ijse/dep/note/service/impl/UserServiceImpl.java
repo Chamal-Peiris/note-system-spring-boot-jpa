@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO registerUser(UserDTO user) throws DuplicateEmailException {
         if(userRepository.existUserByEmail(user.getEmail()) ) throw new DuplicateEmailException("Email already exists");
+        user.setId(UUID.randomUUID().toString());
         return transformer.getUserDTO(userRepository.save(transformer.getUserEntity(user)));
     }
 
