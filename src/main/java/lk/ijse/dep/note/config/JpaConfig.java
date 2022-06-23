@@ -1,20 +1,26 @@
 package lk.ijse.dep.note.config;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import javax.xml.crypto.Data;
 
 @Configuration
 @PropertySource("classpath:application.yml")
+@EnableTransactionManagement
 public class JpaConfig {
     @Autowired
     private Environment env;
@@ -34,5 +40,20 @@ public class JpaConfig {
         jpaVendorAdapter.setDatabasePlatform(env.getProperty("jpa.dialect"));
         jpaVendorAdapter.setDatabase(Database.MYSQL);
         return  jpaVendorAdapter;
+    }
+
+    @Bean
+    public DataSource dataSource(){
+       final HikariDataSource hikariDataSource = new HikariDataSource();
+       hikariDataSource.setJdbcUrl(env.getRequiredProperty("hikari.jdbc-url"));
+       hikariDataSource.setUsername(env.getRequiredProperty("hikari.username"));
+       hikariDataSource.setPassword(env.getRequiredProperty("hikari.password"));
+       hikariDataSource.setDriverClassName(env.getRequiredProperty("hikari.driver-classname"));
+       hikariDataSource.setMaximumPoolSize(env.getRequiredProperty("hikari.max-pool-size",Integer.class));
+       return hikariDataSource;
+    }
+
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+        return new JpaTransactionManager(emf);
     }
 }
