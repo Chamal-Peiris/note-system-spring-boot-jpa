@@ -1,10 +1,11 @@
 package lk.ijse.dep.note.dto;
 
-import jakarta.validation.constraints.*;
+import javax.validation.constraints.*;
 import lk.ijse.dep.note.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class UserDTO implements Serializable {
     private String email;
 
     @NotNull(message = "Password cannot be empty")
-    @Max(value = 6,message = "Password must have minimum of 6 characters")
+    @Length(max = 6,message = "Password must have minimum of 6 characters")
     @NotNull(message = "Password cannot be null")
     private String password;
 

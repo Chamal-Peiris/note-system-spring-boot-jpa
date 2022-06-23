@@ -11,6 +11,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Properties;
@@ -22,14 +23,19 @@ import java.util.Properties;
 public class WebAppConfig {
 
 
+    @Bean
+    public LocalValidatorFactoryBean localValidatorFactoryBean() {
+        return new LocalValidatorFactoryBean();
+    }
 
     @Bean
-    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(){
-    return  new PropertySourcesPlaceholderConfigurer();
+    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
 
     }
+
     @Bean
-    public ObjectMapper objectMapper(){
-        return  new ObjectMapper();
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

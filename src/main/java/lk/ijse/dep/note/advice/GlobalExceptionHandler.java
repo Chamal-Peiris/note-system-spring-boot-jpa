@@ -11,12 +11,16 @@ import org.springframework.web.server.ResponseStatusException;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(DuplicateEmailException.class)
-    public void handleDuplicateEmailexception(DuplicateEmailException e){
+    public String handleDuplicateEmailexception(DuplicateEmailException e){
        e.initCause( new ResponseStatusException(HttpStatus.CONFLICT,e.getMessage()));
+        return e.getMessage();
     }
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
-    public void handleNotfoundExcpetion(NotFoundException e){
+    public String handleNotfoundExcpetion(NotFoundException e){
         e.initCause(new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage()));
+        return e.getMessage();
     }
 }

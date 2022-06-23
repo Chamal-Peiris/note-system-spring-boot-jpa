@@ -1,17 +1,19 @@
 package lk.ijse.dep.note.api;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lk.ijse.dep.note.dto.UserDTO;
 import lk.ijse.dep.note.service.UserService;
 import lk.ijse.dep.note.service.exception.DuplicateEmailException;
 import lk.ijse.dep.note.service.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("api/v1/users")
+@Validated
 public class UserController {
 
     @Autowired
