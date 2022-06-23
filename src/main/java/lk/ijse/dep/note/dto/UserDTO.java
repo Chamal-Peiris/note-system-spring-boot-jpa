@@ -23,7 +23,7 @@ public class UserDTO implements Serializable {
     private String email;
 
     @NotNull(message = "Password cannot be empty")
-    @Length(max = 6,message = "Password must have minimum of 6 characters")
+    @Length(min = 6,message = "Password must have minimum of 6 characters")
     @NotNull(message = "Password cannot be null")
     private String password;
 
