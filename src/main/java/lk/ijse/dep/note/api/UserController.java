@@ -49,7 +49,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping(path = "{userId:[A-Fa-f0-\\~]{36}}",consumes = "application/json")
     public void updateUser(@PathVariable String userId,@RequestBody UserDTO user){
+
+        //todo:validate the user
         try {
+            user.setId(userId);
             userService.updateUser(user);
         } catch (NotFoundException e) {
             throw new ResponseStatusException(404,"invalid user id",e);
