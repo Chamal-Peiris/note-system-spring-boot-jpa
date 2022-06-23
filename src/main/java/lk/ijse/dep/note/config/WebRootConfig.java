@@ -16,7 +16,10 @@ import java.util.Properties;
 @Import(JpaConfig.class)
 public class WebRootConfig {
 
-    public ModelMapper
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
+    }
     @Bean
     public static YamlPropertiesFactoryBean yamlPropertiesFactoryBean(ConfigurableEnvironment env ){
         YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
@@ -24,7 +27,5 @@ public class WebRootConfig {
         Properties yamlProps = yamlPropertiesFactoryBean.getObject();
         env.getPropertySources().addLast(new PropertiesPropertySource("yaml",yamlProps));
         return yamlPropertiesFactoryBean;
-
-
     }
 }
