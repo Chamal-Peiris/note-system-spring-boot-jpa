@@ -19,7 +19,6 @@ import javax.sql.DataSource;
 import javax.xml.crypto.Data;
 
 @Configuration
-@PropertySource("classpath:application.yml")
 @EnableTransactionManagement
 public class JpaConfig {
     @Autowired
@@ -33,6 +32,7 @@ public class JpaConfig {
         return lcmfb;
     }
 
+    @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setShowSql(env.getProperty("jpa.show-sql",Boolean.class,false));
