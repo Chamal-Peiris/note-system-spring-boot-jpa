@@ -1,5 +1,6 @@
 package lk.ijse.dep.note.api;
 
+import jakarta.validation.Valid;
 import lk.ijse.dep.note.dto.UserDTO;
 import lk.ijse.dep.note.service.UserService;
 import lk.ijse.dep.note.service.exception.DuplicateEmailException;
@@ -18,9 +19,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public UserDTO registerUser(@RequestBody UserDTO user) {
-        //validate
-
+    public UserDTO registerUser(@RequestBody @Valid UserDTO user) {
 
         userService.registerUser(user);
 
@@ -45,9 +44,9 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping(path = "{userId:[A-Fa-f0-\\~]{36}}", consumes = "application/json")
-    public void updateUser(@PathVariable String userId, @RequestBody UserDTO user) {
+    public void updateUser(@PathVariable String userId, @RequestBody @Valid UserDTO user) {
 
-        //todo:validate the user
+
 
         user.setId(userId);
         userService.updateUser(user);
