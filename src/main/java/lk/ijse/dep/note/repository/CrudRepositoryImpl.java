@@ -38,7 +38,8 @@ public abstract class CrudRepositoryImpl <T extends SuperEntity,ID extends Seria
 
     @Override
     public Optional<T> findById(ID pk) {
-       return Optional.of( entityManager.find(entityClzObj,pk));
+
+      return Optional.ofNullable(entityManager.find(entityClzObj,pk));
     }
 
     @Override

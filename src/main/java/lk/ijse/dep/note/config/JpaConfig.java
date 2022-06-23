@@ -53,6 +53,7 @@ public class JpaConfig {
        return hikariDataSource;
     }
 
+    @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
         return new JpaTransactionManager(emf);
     }
