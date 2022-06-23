@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 @RestController
-@RequestMapping("api/v1/users/{userId:[A-F0-9\\-]{36}/notes")
+@RequestMapping("/api/v1/users/{userId:[A-Fa-f0-9\\-]{36}}/notes")
 public class NoteController {
 
     @Autowired

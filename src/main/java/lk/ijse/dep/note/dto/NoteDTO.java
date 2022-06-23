@@ -12,9 +12,9 @@ import java.io.Serializable;
 @NoArgsConstructor @AllArgsConstructor @Data
 public class NoteDTO implements Serializable {
     @Null(message = "Id cannot be set")
-    private int id;
+    private Integer id;
     @NotBlank(message = "Text cannot be empty")
     private String text;
-    @Pattern(regexp = "[A-Fa-F0-9\\-]{36}",message = "Invalid user id")
+    @Pattern(regexp = "[A-Fa-f0-9\\-]{36}",message = "Invalid user id")
     private String userId;
 }
