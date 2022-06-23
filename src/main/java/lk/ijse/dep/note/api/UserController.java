@@ -15,48 +15,43 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(consumes = "application/json",produces = "application/json")
-    public UserDTO registerUser(@RequestBody UserDTO user){
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    public UserDTO registerUser(@RequestBody UserDTO user) {
         //validate
 
 
-        try {
-            userService.registerUser(user);
-        } catch (DuplicateEmailException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT,"Email already exists",e);
-        }
+        userService.registerUser(user);
+
         return user;
     }
-    @GetMapping(path = "{userId:[A-Fa-f0-\\~]{36}}}",produces = "application/json")
-    public UserDTO getUserInfo(@PathVariable String userId){
-        System.out.println("get"+userId);
-        try {
-            return userService.getUserInfo(userId);
-        } catch (NotFoundException e) {
-            throw new ResponseStatusException(404,"invalid user id",e);
-        }
+
+    @GetMapping(path = "{userId:[A-Fa-f0-\\~]{36}}}", produces = "application/json")
+    public UserDTO getUserInfo(@PathVariable String userId) {
+        System.out.println("get" + userId);
+
+        return userService.getUserInfo(userId);
+
     }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{userId:[A-Fa-f0-\\~]{36}}")
-    public void deleteuser(@PathVariable String userId){
-        try {
-            userService.deleteUser(userId);
-        } catch (NotFoundException e) {
-            throw new ResponseStatusException(404,"invalid user id",e);
-        }
+    public void deleteuser(@PathVariable String userId) {
+
+        userService.deleteUser(userId);
+
     }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PatchMapping(path = "{userId:[A-Fa-f0-\\~]{36}}",consumes = "application/json")
-    public void updateUser(@PathVariable String userId,@RequestBody UserDTO user){
+    @PatchMapping(path = "{userId:[A-Fa-f0-\\~]{36}}", consumes = "application/json")
+    public void updateUser(@PathVariable String userId, @RequestBody UserDTO user) {
 
         //todo:validate the user
-        try {
-            user.setId(userId);
-            userService.updateUser(user);
-        } catch (NotFoundException e) {
-            throw new ResponseStatusException(404,"invalid user id",e);
-        }
+
+        user.setId(userId);
+        userService.updateUser(user);
+
     }
 
 }
